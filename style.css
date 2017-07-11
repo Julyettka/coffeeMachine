@@ -1,0 +1,21 @@
+.flex-container{
+	display: flex;
+	
+}
+img{
+	align-self: center;
+	width: 40%;
+	height: auto;
+	
+}
+.buttons{
+	width: 50%;
+	margin-left: 5%;
+}
+h1{
+	margin-left: 5%;
+}
+
+.timeField{
+	padding: 25px;
+}
