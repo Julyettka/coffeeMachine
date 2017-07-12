@@ -14,21 +14,20 @@ function CoffeeMachine(rootEl, options, power) {
 
 
 CoffeeMachine.prototype.run = function() {
-    this.timerId = setTimeout(onReady.call(this), getBoilTime.call(this));
-    this.timeField.innerHTML = "Кофе будет готов через " + (getBoilTime.call(this)/1000).toFixed() + " sec";
+    this.timerId = setTimeout(onReady.bind(this), getBoilTime.call(this));
+    this.timeField.innerHTML = "Coffee will be ready in " + (getBoilTime.call(this)/1000).toFixed() + " sec";
   };
 CoffeeMachine.prototype.stop = function(){
     clearTimeout(this.timerId);
-    this.timeField.innerHTML = "Приготовление остановлено";
+    this.timeField.innerHTML = "Preparation stopped";
   };
 
    var getBoilTime = function() {
-     const WATER_HEAT_CAPACITY = 4200;
+    const WATER_HEAT_CAPACITY = 4200;
     return this.waterAmount * WATER_HEAT_CAPACITY * 80 / this.power;
   };
   function onReady() {
-    console.log("bla"); //!executed immediately
-    this.timeField.innerHTML = "Кофе готов!"; //!not executed
+    this.timeField.innerHTML = "Coffee is ready!"; //executed in x getBoilTime() minutes, not instanlty, as we use .bind
   };
   
 
